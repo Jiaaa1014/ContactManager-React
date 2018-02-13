@@ -20,5 +20,21 @@ export default {
           message: message
         })
       })
+  },
+  saveContact: (contact) => {
+    ContactAPI
+      .saveContact('https://jsonplaceholder.typicode.com/users', contact)
+      .then(contacts => {
+        AppDispatcher.dispatch({
+          actionType: AppConstants.RECIEVE_CONTACT,
+          contacts: contacts
+        })
+      })
+      .catch(message => {
+        AppDispatcher.dispatch({
+          actionType: AppConstants.RECIEVE_CONTACT.ERROR,
+          message: message
+        })
+      })
   }
 }

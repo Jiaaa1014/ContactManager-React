@@ -21,10 +21,8 @@ export default class Contacts extends Component {
   componentDidMount = () => AppActions.recieveContacts()
   componentWillUnmount = () => AppStore.removeChangeListener(this.onChange)
 
-  onChange = () => {
-    // 收到
-    this.setState({ contacts: AppStore.getContacts() })
-  }
+  onChange = () => this.setState({ contacts: AppStore.getContacts() })
+
   render() {
 
     let contactListItems;
