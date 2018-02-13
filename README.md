@@ -6,26 +6,24 @@ $ yarn add -S flux bootstrap@3.3.7 react-bootstrap superagent keymirror
 > `bootstrap`用3.3.7版本，目前`react-bootstrap`還沒到新的版本4
 
 ## Flux
-* refs: [1](http://andyyou.logdown.com/posts/241839-flux-notes)
+
+refs: [1](http://andyyou.logdown.com/posts/241839-flux-notes)
 
 `dispatcher`, `store`, `views`, `actions`
-想像一家商店(store)，裡面的補貨叫貨流程都有一定的SOP，所以是負責邏輯部分。而領班(dispatcher)則是收到(register)工作內容(actions)後負責出一張嘴分配工作給其他的員工，以完成營業時間(views)的前置作業，營運store。
-
+想像一家商店(store)，裡面的補貨叫貨流程都有一定的SOP，所以是負責邏輯部分。而領班(dispatcher)則是收到(register)工作內容(actions)後負責出一張嘴分配工作給其他的員工，以完成營業(views)的前置作業，營運store。
 
 ```
 Action > Dispatcher > Store > View
 ```
 
-Action顧名思義就是行為通常帶著`payload`以及`type`，有些行為帶有payload(參數)，有些沒有。四大概念files之間通常會共用一個constants file，定義現在我們在做的事情的名字以便溝通，傳給`type`。
-
-
 ## Problems
 
-* [ref](https://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type)
-注意呼叫callback(Conatact.js)
-是`AppStore.removeChangeListener(this.onChange)`，並非`AppStore.removeChangeListener(this.onChange())`
+* Problem1 (solved)
+[ref](https://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type)
 
-若是後者會發生
+注意呼叫callback(Conatact.js)是`AppStore.removeChangeListener(this.onChange)`，並非`AppStore.removeChangeListener(this.onChange())`
+
+若是後者則會發生
 ```throw TypeError('listener must be a function');```
 
 測試
@@ -36,7 +34,7 @@ typeof a() === 'undefined'
 ```
 ---
 
-*
+* 
 
 ```Encountered two children with the same key```
 在原本頁面以接受外來的10個contacts，AddContact.js表單由於沒有設定id，會使的id沒有改變，使得兩個新建的contact產生id的衝突，進而影響到`key`。
@@ -44,12 +42,11 @@ typeof a() === 'undefined'
 ```js 
 let id = 11
 ```
-
-每當呼叫完AppActions.saveContact()，讓id++，放在setState()裡面外面沒差
+每當呼叫完AppActions.saveContact()，讓`id++`，放在setState()裡面外面沒差
 
 完整的程式碼下：
 ```js
-let id  = 11
+let id = 11
 export default class ContactListItem extends Component {
 
   handleSubmit(e) {
@@ -113,19 +110,11 @@ export default class ContactListItem extends Component {
   }
 }
 ```
+---
+
+另一個問題是自己新增的contact刪除不了，崩╰(〒皿〒)╯潰
 
 ---
-另一個問題是自己新增的contact刪除不了
-
----
-* 照名字排序
-```js
-const SortByName = (a, b) => {
-  const aName = a.name.toLowerCase()
-  const bName = b.name.toLowerCase()
-  return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0))
-}
-```
 
 ### Bootstrap問題
 
@@ -140,6 +129,14 @@ Warning: React.createElement: type is invalid -- expected a string (for built-in
 ```
 
 
+## Sort Function
+```js
+const SortByName = (a, b) => {
+  const aName = a.name.toLowerCase()
+  const bName = b.name.toLowerCase()
+  return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0))
+}
+```
 
 ## Refs
 
