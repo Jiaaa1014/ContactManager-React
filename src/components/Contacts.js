@@ -23,7 +23,7 @@ export default class Contacts extends Component {
 
   onChange = () => {
     // 收到
-    this.setState({ contacts: AppStore.getContacts() }, () => console.log(this.state))
+    this.setState({ contacts: AppStore.getContacts() })
   }
   render() {
 

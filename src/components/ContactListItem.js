@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ListGroup, ListGroupItem, Well } from 'react-bootstrap'
+import { ListGroup, ListGroupItem, Well } from 'react-bootstrap'
 
 export default class ContactListItem extends Component {
   render() {

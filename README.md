@@ -1,11 +1,11 @@
-### Notes
+# Notes
 
 ```bash
 $ yarn add -S flux bootstrap@3.3.7 react-bootstrap superagent keymirror
 ```
 > `bootstrap`用3.3.7版本，目前`react-bootstrap`還沒到新的版本4
 
-#### Flux
+## Flux
 * refs: [1](http://andyyou.logdown.com/posts/241839-flux-notes)
 
 `dispatcher`, `store`, `views`, `actions`
@@ -19,7 +19,7 @@ Action > Dispatcher > Store > View
 Action顧名思義就是行為通常帶著`payload`以及`type`，有些行為帶有payload(參數)，有些沒有。四大概念files之間通常會共用一個constants file，定義現在我們在做的事情的名字以便溝通，傳給`type`。
 
 
-#### Problems solved
+## Problems solved
 
 * [ref](https://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type)
 注意呼叫callback(Conatact.js)
@@ -35,7 +35,7 @@ typeof a === 'function'
 typeof a() === 'undefined'
 ```
 
-#### Refs
+## Refs
 
 * AppStore.js參考[EventEmitter](https://ithelp.ithome.com.tw/articles/10185646)
 
