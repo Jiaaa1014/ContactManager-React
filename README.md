@@ -34,11 +34,12 @@ typeof a() === 'undefined'
 ```
 ---
 
-* 
+* Problem2 (solved)
 
 ```Encountered two children with the same key```
-在原本頁面以接受外來的10個contacts，AddContact.js表單由於沒有設定id，會使的id沒有改變，使得兩個新建的contact產生id的衝突，進而影響到`key`。
-所以解決方式為在該表單file建立變數：
+在原本頁面以接受外來的10個contacts，自建表單由於沒有設定id給`contact`使用，會使的id沒有改變，使得兩個新建的`contact`產生id的衝突，進而影響到`key`。
+
+解決方式在該表單file建立變數：
 ```js 
 let id = 11
 ```
@@ -98,7 +99,6 @@ export default class ContactListItem extends Component {
           id: this.state.newContact.id
         }
       }, () => {
-        console.log(this.state.newContact.id)
         AppActions.saveContact(this.state.newContact)
       })
       this.setState({ newContact: { id: this.state.newContact.id + 1 } })
