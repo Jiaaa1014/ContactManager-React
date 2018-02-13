@@ -24,15 +24,32 @@ export default {
   saveContact: (contact) => {
     ContactAPI
       .saveContact('https://jsonplaceholder.typicode.com/users', contact)
-      .then(contacts => {
+      .then(() => {
         AppDispatcher.dispatch({
           actionType: AppConstants.RECIEVE_CONTACT,
-          contacts: contacts
+          contact
         })
       })
       .catch(message => {
         AppDispatcher.dispatch({
           actionType: AppConstants.RECIEVE_CONTACT.ERROR,
+          message: message
+        })
+      })
+  },
+  deleteContact: (id) => {
+    console.log(id)
+    ContactAPI
+      .deleteContact('https://jsonplaceholder.typicode.com/users/' + id)
+      .then(contact => {
+        AppDispatcher.dispatch({
+          actionType: AppConstants.DELETE_CONTACT,
+          id: id
+        })
+      })
+      .catch(message => {
+        AppDispatcher.dispatch({
+          actionType: AppConstants.DELETE_CONTACT.ERROR,
           message: message
         })
       })

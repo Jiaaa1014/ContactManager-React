@@ -19,7 +19,7 @@ Action > Dispatcher > Store > View
 Action顧名思義就是行為通常帶著`payload`以及`type`，有些行為帶有payload(參數)，有些沒有。四大概念files之間通常會共用一個constants file，定義現在我們在做的事情的名字以便溝通，傳給`type`。
 
 
-## Problems solved
+## Problems
 
 * [ref](https://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type)
 注意呼叫callback(Conatact.js)
@@ -113,6 +113,10 @@ export default class ContactListItem extends Component {
   }
 }
 ```
+
+---
+另一個問題是自己新增的contact刪除不了
+
 ---
 * 照名字排序
 ```js

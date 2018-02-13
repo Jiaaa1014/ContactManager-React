@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem, Well } from 'react-bootstrap'
+import { Button, ListGroup, ListGroupItem, Well } from 'react-bootstrap'
+import AppActions from '../actions/AppActions'
+
 
 export default class ContactListItem extends Component {
+
+  handleDeleteClick(id) {
+    AppActions.deleteContact(id)
+  }
   render() {
     const { contact } = this.props
     return (
@@ -11,6 +17,7 @@ export default class ContactListItem extends Component {
           <ListGroupItem>Email: {contact.email}</ListGroupItem>
           <ListGroupItem>Phone: {contact.phone}</ListGroupItem>
         </ListGroup>
+        <Button bsStyle="danger" onClick={this.handleDeleteClick.bind(this, contact.id)}>Delete</Button>
       </Well>
     );
   }

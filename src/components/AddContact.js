@@ -11,6 +11,7 @@ export default class ContactListItem extends Component {
         name: '',
         email: '',
         phone: '',
+        id: ''
       }
     }
   }
