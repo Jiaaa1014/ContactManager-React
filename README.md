@@ -37,7 +37,7 @@ typeof a() === 'undefined'
 * Problem2 (solved)
 
 ```Encountered two children with the same key```
-在原本頁面以接受外來的10個contacts，自建表單由於沒有設定id給`contact`使用，會使的id沒有改變，使得兩個新建的`contact`產生id的衝突，進而影響到`key`。
+在原本頁面以接受外來的10個contacts，自建表單由於沒有設定id給`contact`使用，id沒有改變，使得兩個新建的`contact`產生id的衝突，進而影響到`key`。
 
 解決方式在該表單file建立變數：
 ```js 
@@ -116,13 +116,14 @@ export default class ContactListItem extends Component {
 
 ---
 
-### Bootstrap問題
+## DOM問題
 
 * button
 <button>的type若為submit，按下去會reload，使用event.preventDefault()
+> [類似問題](https://github.com/Jiaaa1014/CountDown_React) 
 
 * 引用react-bootstrap有些大小寫要分清楚
-像是</Panel.Body>誤寫成</Panel.body>
+像是`</Panel.Body>`誤寫成`</Panel.body>`
 
 ```
 Warning: React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
